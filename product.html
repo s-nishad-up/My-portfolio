@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Nishad | My Products & Apps</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore S-Nishad's premium apps and products. Download, view live demos, and discover innovative solutions.">
+    <meta name="keywords" content="S-Nishad apps, web developer products, AI tools, download apps, live demos">
+    <meta name="author" content="S-Nishad">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4da6ff;
+            --secondary-color: #ff4d7d;
+            --accent-color: #ffcc4d;
+            --dark-color: #0a0a0a;
+            --darker-color: #050505;
+            --light-color: #ffffff;
+            --gray-color: #6c757d;
+            --dark-gray: #1a1a1a;
+            --transition: all 0.3s ease;
+            --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light-color);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav ul li {
+            margin-left: 25px;
+        }
+
+        .nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin: 100px auto 40px;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            background-color: var(--dark-gray);
+            color: var(--light-color);
+            font-size: 1rem;
+            box-shadow: var(--box-shadow);
+            padding-right: 50px;
+        }
+
+        .search-container button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .product-card {
+            background-color: var(--dark-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .product-info p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .product-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-tech span {
+            background-color: rgba(77, 166, 255, 0.1);
+            color: var(--primary-color);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .product-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-color);
+            border: 2px solid var(--light-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary:hover {
+            background-color: #3a8ae6;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        /* Floating Elements Animation */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234da6ff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center center;
+            opacity: 0;
+            animation: float 6s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: var(--darker-color);
+            padding: 80px 0 30px;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-brand p {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-social a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--dark-gray);
+            color: var(--light-color);
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+        }
+
+        .footer-links h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a {
+            color: var(--gray-color);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* Back to Home Button */
+        .back-home {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            z-index: 100;
+        }
+
+        .back-home:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background-color: var(--darker-color);
+                transition: var(--transition);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .nav.active {
+                right: 0;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav ul li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Elements Animation -->
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">S-NISHAD</a>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html#projects">PROJECTS</a></li>
+                    <li><a href="product.html">PRODUCTS</a></li>
+                    <li><a href="blog.html">BLOG</a></li>
+                    <li><a href="index.html#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" placeholder="Search products..." id="searchInput">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Product 1: Chat Circle -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/4da6ff?text=Chat+Circle" alt="Chat Circle App">
+                    
+                </div>
+                <div class="product-info">
+                    <h3>Chat Circle</h3>
+                    <p>Real-time chat application inspired by WhatsApp with custom emojis and mood-based themes.</p>
+                    <div class="product-tech">
+                        <span>React.js</span>
+                        <span>Appwrite</span>
+                        <span>Supabase</span>
+                    </div>
+                    <div class="product-links">
+                        <a href="https://chatcircle.vercel.app" target="_blank" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">// Loading Animation
+document.addEventListener('DOMContentLoaded', function() {
+    // Loading animation
+    const letters = document.querySelectorAll('.loading-letter');
+    letters.forEach((letter, index) => {
+        letter.style.animationDelay = `${index * 0.1}s`;
+    });
+    
+    setTimeout(() => {
+        document.querySelector('.loading-screen').style.opacity = '0';
+        setTimeout(() => {
+            document.querySelector('.loading-screen').style.display = 'none';
+        }, 500);
+    }, 2000);
+    
+    // Mobile Menu Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('.nav');
+
+    hamburger.addEventListener('click', function() {
+        this.classList.toggle('active');
+        nav.classList.toggle('active');
+        document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : 'auto';
+    });
+
+    // Close menu when clicking links
+    document.querySelectorAll('.nav ul li a').forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+
+    // Header Scroll Effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('.header');
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        
+        header.classList.toggle('scrolled', window.scrollY > 50);
+        scrollTopBtn.classList.toggle('active', window.scrollY > 300);
+    });
+
+    // Scroll to Top
+    document.querySelector('.scroll-top').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Current Year in Footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Floating Elements
+    function createFloatingElements() {
+        const container = document.querySelector('.floating-hearts');
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 10 + 5) + 's';
+            heart.style.animationDelay = (Math.random() * 5) + 's';
+            container.appendChild(heart);
+        }
+
+        const binaryContainer = document.querySelector('.binary-rain');
+        for (let i = 0; i < 100; i++) {
+            const binary = document.createElement('div');
+            binary.classList.add('binary-digit');
+            binary.textContent = Math.random() > 0.5 ? '1' : '0';
+            binary.style.left = Math.random() * 100 + 'vw';
+            binary.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            binary.style.animationDelay = (Math.random() * 5) + 's';
+            binary.style.fontSize = (Math.random() * 10 + 12) + 'px';
+            binaryContainer.appendChild(binary);
+        }
+    }
+    createFloatingElements();
+
+    // Animate elements when in view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.id === 'skills') {
+                    animateSkillBars();
+                } else if (entry.target.id === 'projects') {
+                    animateProjectCards();
+                    setupProjectSlider();
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Mobile Project Slider
+    function setupProjectSlider() {
+        const projectsContainer = document.querySelector('.projects-grid');
+        const projectCards = document.querySelectorAll('.project-card');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        
+        if (!projectsContainer || !projectCards.length) return;
+        
+        let currentIndex = 0;
+        const cardWidth = projectCards[0].offsetWidth + 30;
+        
+        function updateSlider() {
+            projectsContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            if (prevBtn && nextBtn) {
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex >= projectCards.length - 1;
+            }
+        }
+        
+        if (window.innerWidth <= 768) {
+            projectsContainer.style.display = 'flex';
+            projectsContainer.style.transition = 'transform 0.5s ease';
+            projectsContainer.style.overflowX = 'auto';
+            projectsContainer.style.scrollSnapType = 'x mandatory';
+            
+            let slideInterval = setInterval(() => {
+                currentIndex = currentIndex < projectCards.length - 1 ? currentIndex + 1 : 0;
+                updateSlider();
+            }, 3000);
+
+            if (prevBtn && nextBtn) {
+                const resetInterval = () => {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(() => {
+                        currentIndex = currentIndex < projectCards.length - 1 ? currentIndex + 1 : 0;
+                        updateSlider();
+                    }, 3000);
+                };
+                
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) currentIndex--;
+                    updateSlider();
+                    resetInterval();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < projectCards.length - 1) currentIndex++;
+                    updateSlider();
+                    resetInterval();
+                });
+            }
+            
+            updateSlider();
+        }
+    }
+
+    // Web3Forms Submission with Error Handling
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const resultDiv = document.getElementById('formResult');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<span>SENDING...</span><i class="fas fa-spinner fa-spin"></i>';
+            submitBtn.disabled = true;
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Please wait...';
+            resultDiv.className = 'form-response';
+            
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                const json = await response.json();
+                
+                if (response.status === 200) {
+                    resultDiv.innerHTML = 'Form submitted successfully! Redirecting...';
+                    resultDiv.className = 'form-response success-message';
+                    setTimeout(() => {
+                        window.location.href = 'thankyou.html';
+                    }, 1500);
+                } else {
+                    throw new Error(json.message || 'Form submission failed');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                resultDiv.innerHTML = `
+                    <strong>Error sending message:</strong> ${error.message}<br><br>
+                    Please try again or contact me directly via:<br>
+                    <div class="error-contact-options">
+                        <a href="mailto:sn198nishad@gmail.com" class="error-contact-link">
+                            <i class="fas fa-envelope"></i> Email
+                        </a>
+                        <a href="https://wa.me/918726370198" class="error-contact-link whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
+                `;
+                resultDiv.className = 'form-response error-message';
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        const projectsContainer = document.querySelector('.projects-grid');
+        if (projectsContainer) {
+            if (window.innerWidth > 768) {
+                projectsContainer.style.transform = 'none';
+                projectsContainer.style.display = 'grid';
+            } else {
+                setupProjectSlider();
+            }
+        }
+    });
+
+    // Helper functions
+    function animateSkillBars() {
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            bar.style.width = bar.getAttribute('data-level') + '%';
+        });
+    }
+
+    function animateProjectCards() {
+        document.querySelectorAll('.project-card').forEach((card, index) => {
+            setTimeout(() => card.classList.add('show'), index * 200);
+        });
+    }
+});</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: LinguaLink AI -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/ff4d7d?text=LinguaLink+AI" alt="LinguaLink AI">
+                 
+                </div>
+                <div class="product-info">
+                    <h3>LinguaLink AI</h3>
+                    <p>AI-powered translation web app with multi-language support and real-time conversion.</p>
+                    <div class="product-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="product-links">
+                        <a href="https://lingualinkai.blogspot.com" target="_blank" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary">D</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: VoiceBox -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/ffcc4d?text=VoiceBox" alt="VoiceBox App">
+                    
+                </div>
+                <div class="product-info">
+                    <h3>VoiceBox</h3>
+                    <p>Text-to-speech converter that transforms any text input into natural sounding audio.</p>
+                    <div class="product-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="product-links">
+                        <a href="https://vvoicebox.blogspot.com" target="_blank" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class="btn btn-secondary"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: NexusAI -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/4da6ff?text=NexusAI" alt="NexusAI Image Generator">
+                   
+                </div>
+                <div class="product-info">
+                    <h3>NexusAI</h3>
+                    <p>Creative AI image generator that produces unique visuals from text prompts.</p>
+                    <div class="product-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="product-links">
+                        <a href="https://nexusaiimage.blogspot.com" target="_blank" class="btn btn-primary">Live Demo</a>
+                        <a href="#" class
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: NAI Image Enhancer -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://via.placeholder.com/600x400/1a1a1a/ff4d7d?text=NAI+Enhancer" alt="NAI Image Enhancer">
+                    
+                </div>
+                <div class="product-info">
+                    <h3>NAI Image Enhancer</h3>
+                    <p>AI-powered tool that improves photo quality with advanced processing algorithms.</p>
+                    <div class="product-tech">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="product-links">
+                        <a href="https://naiimage.blogspot.com" target="_blank" class="btn btn-primary">Live Demo</a>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">S-NISHAD</a>
+                    <p>Building digital empires with precision and power.</p>
+                    <div class="footer-social">
+                        <a href="https://github.com/S-Nishad-up" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://instagram.com/alon_boy.in" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@mr_s-nishad" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="mailto:sn198nishad@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>NAVIGATION</h3>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="index.html#projects">PROJECTS</a></li>
+                        <li><a href="product.html">PRODUCTS</a></li>
+                        <li><a href="blog.html">BLOG</a></li>
+                        <li><a href="index.html#contact">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>PRODUCTS</h3>
+                    <ul>
+                        <li><a href="#">Chat Circle</a></li>
+                        <li><a href="#">LinguaLink AI</a></li>
+                        <li><a href="#">VoiceBox</a></li>
+                        <li><a href="#">NexusAI</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; <span id="currentYear"></span> S-NISHAD. ALL RIGHTS RESERVED.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-home" title="Return to Home">
+        <i class="fas fa-home"></i>
+    </a>
+
+    <script>
+        // Floating Elements Animation
+        function createFloatingElements() {
+            const container = document.getElementById('floatingElements');
+            const elements = ['heart', 'binary-digit'];
+            
+            for (let i = ; i < 20; i++) {
+                const element = document.createElement('div');
+                element.className = elements[Math.floor(Math.random() * elements.length)];
+                
+                if (element.className === 'heart') {
+                    element.style.left = Math.random() * 100 + 'vw';
+                    element.style.animationDuration = (Math.random() * 10 + 5) + 's';
+                    element.style.animationDelay = (Math.random() * 5) + 's';
+                } else {
+                    element.textContent = Math.random() > 0.5 ? '1' : '0';
+                    element.style.left = Math.random() * 100 + 'vw';
+                    element.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                    element.style.animationDelay = (Math.random() * 5) + 's';
+                    element.style.fontSize = (Math.random() * 10 + 12) + 'px';
+                }
+                
+                container.appendChild(element);
+            }
+        }
+
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('.nav');
+
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const productCards = document.querySelectorAll('.product-card');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            productCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingElements();
+        });
+    </script>
+</body>
+</html>
